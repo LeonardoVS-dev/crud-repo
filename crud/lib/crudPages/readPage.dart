@@ -16,7 +16,7 @@ class _readPageState extends State<readPage> {
 
   _getUsers() {
     
-    getAPI.getUsers().then((response) => 
+    readAPI.getUsers().then((response) => 
       setState(() {
           Iterable list = json.decode(response.body);
           users = list.map((model) => GetUser.fromJson(model)).toList();

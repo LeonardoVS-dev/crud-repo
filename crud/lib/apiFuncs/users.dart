@@ -28,7 +28,7 @@ class userEXPanel {
   bool isExpanded;
 }
 
-class addUser {
+/*class addUser {
   String name;
   String email;
   String phone;
@@ -43,4 +43,4 @@ class addUser {
   Map toJson() {
     return {'name': name, 'email': email, 'phone': phone};
   }
-}
+}*/
