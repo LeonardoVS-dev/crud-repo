@@ -12,14 +12,14 @@ class readPage extends StatefulWidget {
 }
 
 class _readPageState extends State<readPage> {
-  var users = List<GetUser>.empty();
+  var users = List<readUser>.empty();
 
   _getUsers() {
     
     readAPI.getUsers().then((response) => 
       setState(() {
           Iterable list = json.decode(response.body);
-          users = list.map((model) => GetUser.fromJson(model)).toList();
+          users = list.map((model) => readUser.fromJson(model)).toList();
       },)
     );
   }
@@ -50,7 +50,7 @@ class _readPageState extends State<readPage> {
         title: Text('Read', style: Theme.of(context).textTheme.displayLarge,),
       ),
       body: Container(
-        margin: const EdgeInsets.only(left: 20, right: 20, bottom: 20, top: 10),
+        margin: const EdgeInsets.all(20),
         child: ListView.builder(
           itemCount: users.length,
           itemBuilder: (context, index) {
@@ -59,7 +59,7 @@ class _readPageState extends State<readPage> {
                 Card(
                   child: ListTile(
                     title: Text(users[index].idUser),
-                    subtitle: Text('Login: ${users[index].login}; Password: ${users[index].password}'),
+                    subtitle: Text('login: ${users[index].login}\npassword: ${users[index].password}'),
                   ),
                 ),
                 const Divider(),

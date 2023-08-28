@@ -1,5 +1,4 @@
 import 'package:crud/apiFuncs/api.dart';
-//import 'package:crud/apiFuncs/users.dart';
 import 'package:flutter/material.dart';
 
 class createPage extends StatefulWidget {
@@ -40,26 +39,6 @@ class _createPageState extends State<createPage> {
             child: Form(
               child: Column(
                 children: [
-                  /*TextFormField(
-                    controller: _nameController,
-                    maxLength: 60,
-                    style: const TextStyle(
-                      fontSize: 14
-                    ),
-                    decoration:  InputDecoration(
-                      contentPadding: const EdgeInsets.only(bottom: 5,),
-                      icon: const Icon(Icons.account_circle),
-                      labelText: 'Name',
-                      labelStyle: Theme.of(context).textTheme.labelMedium,
-                      enabledBorder: const UnderlineInputBorder(
-                        borderSide: BorderSide(color: Color(0xFF6200EE)),
-                      ),
-                      suffix: IconButton(icon: const Icon(Icons.clear), onPressed: () {
-                        _nameController.clear();
-                      },),
-                    ),
-                  ),*/
-                  //SizedBox(height: altura,),
                   TextFormField(
                     controller: _loginController,
                     maxLength: 50,
@@ -77,8 +56,6 @@ class _createPageState extends State<createPage> {
                       suffix: IconButton(icon: const Icon(Icons.clear), onPressed: () {
                         _loginController.clear();
                       },
-                      //iconSize: 10,
-                      //splashRadius: 2,
                       ),
                     
                     ),
@@ -108,12 +85,29 @@ class _createPageState extends State<createPage> {
                   SizedBox(height: altura,),
                   ElevatedButton(
                     onPressed: () {
-                      print('apostado');
-                      login = _loginController.toString();
-                      password = _passwordController.toString();
-                      
-                      addAPI.addUsers(login, password);
-                      print('postado');
+                     if(_loginController.text.isEmpty || _passwordController.text.isEmpty) {
+                        showDialog(
+                          context: context, 
+                          builder: (BuildContext context) {
+                              return AlertDialog(
+                                content: const Text('É preciso preencher os dois campos para poder gravar.'),
+                                actions: [
+                                TextButton(
+                                  child: const Text('Voltar'),
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                ),
+                              ],
+                            );
+                          }
+                        );
+                      }
+                      else {
+                        login = _loginController.text;
+                        password = _passwordController.text;
+                        addAPI.addUsers(login, password);
+                      }
                     },
                     style: const ButtonStyle(
                       elevation: MaterialStatePropertyAll(6),

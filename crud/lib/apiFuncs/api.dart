@@ -2,18 +2,14 @@ import 'dart:async';
 import 'package:http/http.dart' as http;
 
 
-//const baseUrl = "192.168.80.24";
-const baseUrl = "192.168.15.6";
-//const baseUrl = "http://localhost";
+const baseUrl = "sotreinamentos.com.br";
 
 class readAPI {
   static Future getUsers() {
     var url = Uri(
       scheme: 'http',
       host: baseUrl,
-      //path: 'C:/xampp/htdocs/getdata.php',
-      //path: 'flutter/consultar.php',
-      path: '/getdata.php',
+      path: '/tcc/getdata.php',
     );
     return http.get(url as Uri);
   }
@@ -21,10 +17,14 @@ class readAPI {
 
 class addAPI {
   static Future addUsers(String login, String password) {
+    final Parameters = {
+      'login': login,
+      'password': password,
+    };
     var url = Uri(
       scheme: 'http',
       host: baseUrl,
-      path: '/adddata.php?login=$login&password=$password',
+      path: '/tcc/adddata.php',queryParameters: Parameters
     );
     return http.post(url as Uri);
   }
