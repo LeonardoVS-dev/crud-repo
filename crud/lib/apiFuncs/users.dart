@@ -1,12 +1,12 @@
-class GetUser {
+class readUser {
   String idUser;
   String login;
   String password;
 
   //construtor
-  GetUser(this.idUser, this.login, this.password);
+  readUser(this.idUser, this.login, this.password);
 
-  GetUser.fromJson(Map json)
+  readUser.fromJson(Map json)
       : idUser = json['idUser'],
         login = json['login'],
         password = json['password'];
@@ -16,31 +16,18 @@ class GetUser {
   }
 }
 
-class userEXPanel {
+class userEXPanel{
   userEXPanel({
-    required this.expandedValue,
-    required this.headerValue,
+    required this.id,
+    required this.login,
+    required this.password,
     this.isExpanded = false,
   });
 
-  String expandedValue;
-  String headerValue;
+  String id;
+  String login;
+  String password;
   bool isExpanded;
 }
 
-/*class addUser {
-  String name;
-  String email;
-  String phone;
 
-  addUser(this.name, this.email, this.phone);
-
-  addUser.toJson(Map json)
-      : name = json['name'],
-      email = json['email'],
-      phone = json['phone'];
-
-  Map toJson() {
-    return {'name': name, 'email': email, 'phone': phone};
-  }
-}*/

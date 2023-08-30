@@ -12,7 +12,7 @@ class _updatePageState extends State<updatePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color(0xff6750a4),
+        backgroundColor: Color(0xff6750a4),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: Colors.white,),
           onPressed: () {

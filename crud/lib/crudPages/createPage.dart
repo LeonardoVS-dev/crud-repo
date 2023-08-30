@@ -16,6 +16,10 @@ class _createPageState extends State<createPage> {
   late String login;
   late String password;
 
+  static const errorSnackBar = SnackBar(
+    content: Text('Houve um erro ao incluir.'),
+  );
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -106,7 +110,13 @@ class _createPageState extends State<createPage> {
                       else {
                         login = _loginController.text;
                         password = _passwordController.text;
-                        addAPI.addUsers(login, password);
+                        try {
+                          addAPI.addUsers(login, password);
+                        }
+                        on Exception catch (e) {
+                          print(e);
+                          ScaffoldMessenger.of(context).showSnackBar(errorSnackBar);
+                        }
                       }
                     },
                     style: const ButtonStyle(
