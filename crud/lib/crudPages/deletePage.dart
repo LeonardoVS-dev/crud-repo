@@ -81,7 +81,9 @@ class _deletePageState extends State<deletePage> {
                                   onPressed: () {
                                     delAPI.delUsers(users[index].idUser);
                                     Navigator.of(context).pop();
+                                    _getUsers();
                                     ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                                    
                                   },
                                 ),
                               ],

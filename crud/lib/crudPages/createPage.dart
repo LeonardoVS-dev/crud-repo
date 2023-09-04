@@ -20,6 +20,10 @@ class _createPageState extends State<createPage> {
     content: Text('Houve um erro ao incluir.'),
   );
 
+  static const successSnackBar = SnackBar(
+    content: Text('Incluído com sucesso!'),
+  );
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -112,6 +116,7 @@ class _createPageState extends State<createPage> {
                         password = _passwordController.text;
                         try {
                           addAPI.addUsers(login, password);
+                          ScaffoldMessenger.of(context).showSnackBar(successSnackBar);
                         }
                         on Exception catch (e) {
                           print(e);

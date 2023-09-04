@@ -7,7 +7,7 @@ class readUser {
   readUser(this.idUser, this.login, this.password);
 
   readUser.fromJson(Map json)
-      : idUser = json['idUser'],
+      : idUser = json['idUser'].toString(),
         login = json['login'],
         password = json['password'];
 
@@ -18,6 +18,7 @@ class readUser {
 
 class userEXPanel{
   userEXPanel({
+
     required this.id,
     required this.login,
     required this.password,
